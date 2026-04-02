@@ -37,7 +37,7 @@ A comprehensive web application for managing doctor appointments, built with mod
 - **Java** - Programming language
 - **Spring Boot** - Framework for building REST APIs
 - **Spring Data JPA** - For database interactions
-- **MySQL/PostgreSQL** - Database (to be decided)
+- **MySQ** - Database (to be decided)
 - **Maven/Gradle** - Build tool
 
 
@@ -112,10 +112,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👨‍💻 About the Developer
 
-**arshsnaz** is a passionate developer specializing in modern web technologies. This Doctor Appointment System showcases expertise in frontend development with React and TypeScript. The project is evolving into a full-stack Java application, with backend implementation planned for future development.
+**Abubakar** is a passionate developer specializing in modern web technologies. This Doctor Appointment System showcases expertise in frontend development with React and TypeScript. The project is evolving into a full-stack Java application, with backend implementation planned for future development.
 
 Connect with arshsnaz on [GitHub](https://github.com/arshsnaz) for more projects and collaborations.
 
 ---
 
-*Built with ❤️ using React & TypeScript (Backend coming soon with Java!)*
