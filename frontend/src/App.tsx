@@ -39,7 +39,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <AppProvider>
-        <HashRouter>
+        <HashRouter basename="/DoctorAppointment">
           <Routes>
             {/* User Frontend */}
             <Route element={<UserLayout />}>
