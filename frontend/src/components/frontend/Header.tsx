@@ -1,6 +1,4 @@
-
 import { useNavigate } from "react-router-dom";
-
 
 const Header = () => {
   const navigate = useNavigate();
@@ -9,6 +7,17 @@ const Header = () => {
     <div className="relative bg-primary rounded-xl overflow-hidden mx-4 md:mx-10 mt-6">
       <div className="flex flex-col md:flex-row items-center">
         <div className="flex-1 p-8 md:p-14 text-primary-foreground">
+          <div className="mb-6 flex items-center gap-4">
+            <img
+              src="/assets/doctor-logo.png"
+              alt="Prescripto logo"
+              className="w-20 h-20 md:w-24 md:h-24 object-contain rounded-2xl bg-white p-2 shadow-lg"
+            />
+            <div>
+              <p className="text-sm uppercase tracking-[0.3em] text-primary-foreground/70 mb-1">Our Logo</p>
+              <h2 className="text-2xl md:text-3xl font-semibold">Prescripto</h2>
+            </div>
+          </div>
           <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-4">
             Book Appointment <br /> With Trusted Doctors
           </h1>
@@ -22,8 +31,9 @@ const Header = () => {
             Book appointment →
           </button>
         </div>
-        <div className="hidden md:block w-[400px] h-[300px] overflow-hidden flex items-center justify-center">
-          <img src="\dist\assets\doctor-logo.png" alt="Doctors Logo" className="object-contain" width={64} height={64} />
+
+        <div className="mb-4 md:mb-0 md:ml-8">
+          <span className="text-xl md:text-2xl font-bold text-primary-foreground">Prescripto</span>
         </div>
       </div>
     </div>

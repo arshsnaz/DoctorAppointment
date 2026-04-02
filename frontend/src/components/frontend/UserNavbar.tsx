@@ -11,7 +11,7 @@ const UserNavbar = () => {
   return (
     <nav className="flex items-center justify-between py-4 px-6 md:px-10 border-b border-border">
       <Link to="/" className="text-2xl font-bold text-primary flex items-center gap-2">
-        <img src="\dist\assets\doctor-logo.png" alt="Logo" style={{width:'32px',height:'32px'}} />
+        <img src="/assets/doctor-logo.png" alt="Prescripto logo" className="w-7 h-7 object-contain border border-primary/20 rounded-md bg-white p-1" />
         Prescripto
       </Link>
 

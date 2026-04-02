@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             <div className="flex flex-col items-start">
               <div className="flex items-center gap-2 mb-4">
-                <img src="\dist\assets\doctor-logo.png" alt="Logo" style={{width:'28px',height:'28px'}} />
+                <img src="/assets/doctor-logo.png" alt="Prescripto logo" className="h-14 w-14 object-contain border border-primary/20 rounded-md bg-white p-1" />
                 <span className="text-2xl font-bold text-primary">Prescripto</span>
               </div>
               <p className="text-muted-foreground text-sm leading-relaxed text-left">
