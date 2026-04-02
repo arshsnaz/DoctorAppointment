@@ -1,10 +1,16 @@
 
 import React, { useState, useEffect } from "react";
+import doc1 from "@/assets/doctors/doc1.png";
+import doc2 from "@/assets/doctors/doc2.png";
+import doc3 from "@/assets/doctors/doc3.png";
+import doc4 from "@/assets/doctors/doc4.png";
+import doc5 from "@/assets/doctors/doc5.png";
+import doc6 from "@/assets/doctors/doc6.png";
 
 const testimonials = [
-  {text: 'Dr. Montgomery is fantastic! He listened carefully to all my concerns and provided clear, actionable advice. I felt truly cared for and supported throughout the entire consultation process.', name: 'Sophia M.', date: 'November 16', img: '/assets/doctors/doc3.png'},
-  {text: 'I highly recommend Dr. Harper for his professionalism and dedication. He made me feel comfortable and explained everything clearly.', name: 'James L.', date: 'October 2', img: '/assets/doctors/doc5.png'},
-  {text: 'The best doctor I have ever visited. The appointment process was smooth and the care was exceptional.', name: 'Priya S.', date: 'September 21', img: '/assets/doctors/doc6.png'}
+  {text: 'Dr. Montgomery is fantastic! He listened carefully to all my concerns and provided clear, actionable advice. I felt truly cared for and supported throughout the entire consultation process.', name: 'Sophia M.', date: 'November 16', img: doc3},
+  {text: 'I highly recommend Dr. Harper for his professionalism and dedication. He made me feel comfortable and explained everything clearly.', name: 'James L.', date: 'October 2', img: doc5},
+  {text: 'The best doctor I have ever visited. The appointment process was smooth and the care was exceptional.', name: 'Priya S.', date: 'September 21', img: doc6}
 ];
 
 function TestimonialsCarousel() {
@@ -49,7 +55,7 @@ const Index = () => {
           <a href="/login" className="premium-hero-btn" style={{background:'#2563eb',color:'#fff',fontWeight:700,fontSize:'1.2em',borderRadius:'2em',padding:'1em 3em',textDecoration:'none',boxShadow:'0 2px 12px 0 rgba(37,99,235,0.10)',transition:'background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s',width:'fit-content'}}>Consultation</a>
         </div>
         <div style={{flex:'1 1 420px',minWidth:'320px',display:'flex',flexDirection:'column',alignItems:'center',gap:'0.2em',justifyContent:'center'}}>
-          <img src="/assets/doctors/doc1.png" alt="Doctor" style={{width:'320px',height:'400px',objectFit:'contain',borderRadius:'1.2em',marginBottom:'-0.5em'}} />
+          <img src={doc1} alt="Doctor" style={{width:'320px',height:'400px',objectFit:'contain',borderRadius:'1.2em',marginBottom:'-0.5em'}} />
           <span style={{color:'#2563eb',fontSize:'2.2em',fontWeight:700,marginTop:'0.1em'}}>&ldquo;</span>
           <span style={{fontSize:'1.18em',color:'#374151',fontStyle:'italic',lineHeight:1.6,display:'block',margin:'0.1em 0'}}>I'm here to provide expert care, guide you through your health concerns, and help you live a healthier life.</span>
           <span style={{color:'#2563eb',fontWeight:700,fontSize:'1.15em'}}>Dr. Harper Montgomery</span>
@@ -85,7 +91,7 @@ const Index = () => {
       {/* About Section */}
       <section className="premium-about-section" style={{display:'flex',flexWrap:'wrap',alignItems:'center',gap:'2em',background:'#fff',borderRadius:'2em',boxShadow:'0 4px 32px 0 rgba(44,83,100,0.08)',margin:'2em 0',padding:'2.5em 1em'}}>
         <div className="premium-about-image" style={{flex:'1 1 320px',minWidth:'220px',maxWidth:'340px'}}>
-          <img src="/assets/doctors/doc2.png" alt="About Dr. Harper Montgomery" style={{width:'100%',height:'auto',borderRadius:'2em',objectFit:'cover',boxShadow:'0 8px 32px 0 rgba(44,83,100,0.10)'}} />
+          <img src={doc2} alt="About Dr. Harper Montgomery" style={{width:'100%',height:'auto',borderRadius:'2em',objectFit:'cover',boxShadow:'0 8px 32px 0 rgba(44,83,100,0.10)'}} />
         </div>
         <div className="premium-about-content" style={{flex:'2 1 400px',minWidth:'260px',textAlign:'left',alignItems:'flex-start',display:'flex',flexDirection:'column',gap:'1em'}}>
           <h2 style={{fontSize:'2.2em',fontWeight:700,marginBottom:'0.2em'}}>About Dr. Harper Montgomery</h2>
@@ -118,32 +124,32 @@ const Index = () => {
         }}>
           {[
             {
-              img: '/assets/doctors/doc1.png',
+              img: doc1,
               title: 'Chronic Fatigue',
               desc: 'Feeling constantly tired despite adequate rest could indicate an underlying condition.'
             },
             {
-              img: '/assets/doctors/doc2.png',
+              img: doc2,
               title: 'Unexplained Weight Changes',
               desc: 'Sudden weight loss or gain without a clear cause should be addressed.'
             },
             {
-              img: '/assets/doctors/doc3.png',
+              img: doc3,
               title: 'Frequent Headaches',
               desc: 'Recurring headaches or migraines may require further evaluation.'
             },
             {
-              img: '/assets/doctors/doc4.png',
+              img: doc4,
               title: 'Digestive Issues',
               desc: 'Bloating, stomach pain, or irregular bowel movement may need attention.'
             },
             {
-              img: '/assets/doctors/doc5.png',
+              img: doc5,
               title: 'Shortness of Breath',
               desc: 'Difficulty breathing during normal activities could signal a serious health issue.'
             },
             {
-              img: '/assets/doctors/doc6.png',
+              img: doc6,
               title: 'Persistent Cough or Sore Throat',
               desc: 'Especially if it lasts more than two weeks or is accompanied by fever.'
             }
@@ -201,7 +207,7 @@ const Index = () => {
           background:'none',
           padding:'0',
         }}>
-          <img src="/assets/doctors/doc3.png" alt="Doctor" style={{width:'100%',maxWidth:'320px',height:'auto',objectFit:'contain',borderRadius:'2em',background:'none',boxShadow:'none'}} />
+          <img src={doc3} alt="Doctor" style={{width:'100%',maxWidth:'320px',height:'auto',objectFit:'contain',borderRadius:'2em',background:'none',boxShadow:'none'}} />
         </div>
         <div style={{
           flex:'2 1 400px',

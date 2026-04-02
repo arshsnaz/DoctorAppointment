@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import doctorLogo from "@/assets/doctor-logo.png";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ const Header = () => {
         <div className="flex-1 p-8 md:p-14 text-primary-foreground">
           <div className="mb-6 flex items-center gap-4">
             <img
-              src="/assets/doctor-logo.png"
+              src={doctorLogo}
               alt="Prescripto logo"
               className="w-20 h-20 md:w-24 md:h-24 object-contain rounded-2xl bg-white p-2 shadow-lg"
             />
