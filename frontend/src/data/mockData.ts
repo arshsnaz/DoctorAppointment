@@ -28,6 +28,36 @@ export interface Doctor {
   slots_booked: Record<string, string[]>;
 }
 
+import doc1 from "@/assets/doctors/doc1.png";
+import doc2 from "@/assets/doctors/doc2.png";
+import doc3 from "@/assets/doctors/doc3.png";
+import doc4 from "@/assets/doctors/doc4.png";
+import doc5 from "@/assets/doctors/doc5.png";
+import doc6 from "@/assets/doctors/doc6.png";
+
+export const specialities = [
+  "General physician",
+  "Gynecologist",
+  "Dermatologist",
+  "Pediatricians",
+  "Neurologist",
+  "Gastroenterologist",
+];
+
+export interface Doctor {
+  _id: string;
+  name: string;
+  image: string;
+  speciality: string;
+  degree: string;
+  experience: string;
+  about: string;
+  fees: number;
+  available: boolean;
+  address: { line1: string; line2: string };
+  slots_booked: Record<string, string[]>;
+}
+
 export const doctors: Doctor[] = [
   {
     _id: "doc1",
