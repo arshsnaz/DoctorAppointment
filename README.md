@@ -1,6 +1,6 @@
 # Doctor Appointment System
 
-A comprehensive web application for managing doctor appointments, built with modern web technologies. This is a Java full-stack project where the frontend is implemented with React, and the backend (Java/Spring Boot) is planned but not yet started.
+A comprehensive web application for managing doctor appointments, built with modern web technologies. This is a Java full-stack project where the frontend is implemented with React, and the backend is with both Java and Spring Boot.
 
 ## 🚀 Features
 
@@ -33,14 +33,13 @@ A comprehensive web application for managing doctor appointments, built with mod
 - **React Router** - Client-side routing
 - **Lucide React** - Icon library
 
-### Backend (Planned)
+### Backend
 - **Java** - Programming language
 - **Spring Boot** - Framework for building REST APIs
 - **Spring Data JPA** - For database interactions
 - **MySQL/PostgreSQL** - Database (to be decided)
 - **Maven/Gradle** - Build tool
 
-*Note: The backend is not yet implemented. This project currently focuses on the frontend, with backend development planned for future implementation.*
 
 ## 📁 Project Structure
 
@@ -56,7 +55,7 @@ DoctorAppointment/
 │   ├── public/          # Static assets
 │   └── package.json
 ├── backend/           # Java backend (planned, not implemented)
-│   └── (empty for now)
+│   └── (available on versal)
 ├── package.json       # Root orchestration scripts
 └── README.md
 ```
@@ -91,9 +90,9 @@ npm install
 
 The frontend will be available at `http://localhost:8080`.
 
-#### Backend (Not Yet Implemented)
-- Backend development is planned but not started. Future commands will include:
-  - `mvn spring-boot:run` or `gradle bootRun` (to be added)
+#### Backend
+- Backend development is hosted on versal.
+  - `mvn spring-boot:run`
 
 ## 📱 Screenshots
 
