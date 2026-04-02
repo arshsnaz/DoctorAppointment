@@ -39,7 +39,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <AppProvider>
-        <BrowserRouter basename="/DoctorAppointment">
+        <BrowserRouter basename="/DoctorAppointment/">
           <Routes>
             {/* User Frontend */}
             <Route element={<UserLayout />}>
