@@ -7,7 +7,7 @@
     "type": "git",
     "url": "https://github.com/arshsnaz/DoctorAppointment.git"
   },
-  "homepage": "https://arshsnaz.github.io/DoctorAppointment/",
+  "homepage": ".",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
