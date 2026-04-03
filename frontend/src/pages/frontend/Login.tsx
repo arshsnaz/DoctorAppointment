@@ -68,8 +68,8 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-[80vh] flex items-start justify-start px-4">
-      <form onSubmit={handleSubmit} className="w-full max-w-md flex flex-col gap-4 p-8 mx-auto">
+    <div className="min-h-[80vh] flex items-center justify-center px-4 py-10 sm:py-12">
+      <form onSubmit={handleSubmit} className="mx-auto flex w-full max-w-md flex-col gap-4 rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-8">
         <h2 className="text-2xl font-bold text-foreground text-left">{state === "Sign Up" ? "Create Account" : "Login"}</h2>
         <p className="text-sm text-muted-foreground text-left">Please {state === "Sign Up" ? "sign up" : "log in"} to book appointment</p>
 

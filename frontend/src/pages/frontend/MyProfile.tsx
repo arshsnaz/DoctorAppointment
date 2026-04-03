@@ -13,9 +13,9 @@ const MyProfile = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto px-4 py-12">
-      <div className="border border-border rounded-xl p-8">
-        <div className="flex items-center gap-4 mb-6">
+    <div className="max-w-xl mx-auto px-4 sm:px-6 py-12">
+      <div className="border border-border rounded-xl bg-card p-5 sm:p-8">
+        <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center">
           <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center text-primary text-2xl font-bold">
             {profile.name.charAt(0)}
           </div>
@@ -36,12 +36,12 @@ const MyProfile = () => {
           <div>
             <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3">Contact Information</h3>
             <div className="grid gap-3">
-              <div className="flex items-center gap-4">
-                <span className="text-sm text-muted-foreground w-20">Email:</span>
+              <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-4">
+                <span className="w-20 shrink-0 text-sm text-muted-foreground">Email:</span>
                 <span className="text-sm text-foreground">{profile.email}</span>
               </div>
-              <div className="flex items-center gap-4">
-                <span className="text-sm text-muted-foreground w-20">Phone:</span>
+              <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-4">
+                <span className="w-20 shrink-0 text-sm text-muted-foreground">Phone:</span>
                 {isEdit ? (
                   <input
                     value={profile.phone}
@@ -52,8 +52,8 @@ const MyProfile = () => {
                   <span className="text-sm text-foreground">{profile.phone}</span>
                 )}
               </div>
-              <div className="flex items-start gap-4">
-                <span className="text-sm text-muted-foreground w-20">Address:</span>
+              <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:gap-4">
+                <span className="w-20 shrink-0 text-sm text-muted-foreground">Address:</span>
                 {isEdit ? (
                   <div className="flex flex-col gap-1">
                     <input
@@ -77,8 +77,8 @@ const MyProfile = () => {
           <div>
             <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3">Basic Information</h3>
             <div className="grid gap-3">
-              <div className="flex items-center gap-4">
-                <span className="text-sm text-muted-foreground w-20">Gender:</span>
+              <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-4">
+                <span className="w-20 shrink-0 text-sm text-muted-foreground">Gender:</span>
                 {isEdit ? (
                   <select
                     value={profile.gender}
@@ -92,8 +92,8 @@ const MyProfile = () => {
                   <span className="text-sm text-foreground">{profile.gender}</span>
                 )}
               </div>
-              <div className="flex items-center gap-4">
-                <span className="text-sm text-muted-foreground w-20">Birthday:</span>
+              <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-4">
+                <span className="w-20 shrink-0 text-sm text-muted-foreground">Birthday:</span>
                 {isEdit ? (
                   <input
                     type="date"

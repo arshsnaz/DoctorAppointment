@@ -4,18 +4,18 @@ import doctorLogo from "@/assets/doctor-logo.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-secondary px-6 md:px-10">
+    <footer className="bg-secondary px-4 sm:px-6 md:px-10">
       <div className="max-w-7xl mx-auto py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div className="flex flex-col items-start">
-              <div className="flex items-center gap-2 mb-4">
-                <img src={doctorLogo} alt="Prescripto logo" className="h-14 w-14 object-contain border border-primary/20 rounded-md bg-white p-1" />
-                <span className="text-2xl font-bold text-primary">Prescripto</span>
-              </div>
-              <p className="text-muted-foreground text-sm leading-relaxed text-left">
-                Prescripto is your trusted platform for booking doctor appointments, managing health records, and connecting with top healthcare professionals. We are committed to making healthcare accessible, secure, and convenient for everyone.
-              </p>
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
+          <div className="flex flex-col items-start">
+            <div className="mb-4 flex items-center gap-2">
+              <img src={doctorLogo} alt="Prescripto logo" className="h-12 w-12 shrink-0 object-contain border border-primary/20 rounded-md bg-white p-1 sm:h-14 sm:w-14" />
+              <span className="text-2xl font-bold text-primary">Prescripto</span>
             </div>
+            <p className="max-w-md text-left text-sm leading-relaxed text-muted-foreground">
+              Prescripto is your trusted platform for booking doctor appointments, managing health records, and connecting with top healthcare professionals. We are committed to making healthcare accessible, secure, and convenient for everyone.
+            </p>
+          </div>
           <div>
             <h3 className="text-foreground font-semibold mb-4 uppercase text-sm tracking-wide">Company</h3>
             <ul className="flex flex-col gap-2 text-sm text-muted-foreground">

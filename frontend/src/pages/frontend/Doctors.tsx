@@ -13,15 +13,15 @@ const Doctors = () => {
   const filtered = filterSpec ? doctors.filter((d) => d.speciality === filterSpec) : doctors;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
       <h1 className="text-foreground font-medium text-sm mb-6">Browse through the doctors specialist.</h1>
       <div className="flex flex-col md:flex-row gap-8">
         {/* Filter sidebar */}
-        <div>
+        <div className="md:w-52 shrink-0">
           <button onClick={() => setShowFilter(!showFilter)} className="md:hidden border border-border px-4 py-2 rounded text-sm mb-4">
             Filters
           </button>
-          <div className={`flex-col gap-2 min-w-[200px] ${showFilter ? "flex" : "hidden md:flex"}`}>
+          <div className={`flex-col gap-2 ${showFilter ? "flex" : "hidden md:flex"}`}>
             {specialities.map((spec) => (
               <button
                 key={spec}
@@ -37,7 +37,7 @@ const Doctors = () => {
         </div>
 
         {/* Doctor grid */}
-        <div className="flex-1 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+        <div className="flex-1 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {filtered.map((doc) => (
             <div
               key={doc._id}

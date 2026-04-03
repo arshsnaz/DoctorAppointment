@@ -66,11 +66,11 @@ const AppointmentPage = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-12">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
       {/* Doctor info */}
-      <div className="flex flex-col md:flex-row gap-6">
-        <div className="bg-primary/5 rounded-xl p-4 w-full md:w-[250px] flex-shrink-0">
-          <img src={doc.image} alt={doc.name} className="w-full h-[250px] object-cover rounded-lg" />
+      <div className="grid gap-6 md:grid-cols-[240px_1fr]">
+        <div className="bg-primary/5 rounded-xl p-4 w-full flex-shrink-0">
+          <img src={doc.image} alt={doc.name} className="w-full aspect-[4/5] object-cover rounded-lg" />
         </div>
         <div className="flex-1 border border-border rounded-xl p-6">
           <h1 className="text-2xl font-bold text-foreground flex items-center gap-2">
@@ -90,7 +90,7 @@ const AppointmentPage = () => {
       {/* Booking slots */}
       <div className="mt-10">
         <h2 className="text-lg font-bold text-foreground mb-4">Booking slots</h2>
-        <div className="flex gap-3 overflow-x-auto scrollbar-hide pb-2">
+        <div className="flex gap-3 overflow-x-auto scrollbar-hide pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
           {days.map((day, i) => (
             <button
               key={i}

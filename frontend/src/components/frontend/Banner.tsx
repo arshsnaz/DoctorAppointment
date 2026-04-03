@@ -5,18 +5,18 @@ const Banner = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="mx-4 md:mx-10 mb-16 bg-primary rounded-xl overflow-hidden">
-      <div className="flex flex-col md:flex-row items-center">
-        <div className="flex-1 p-8 md:p-14 text-primary-foreground">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">Book Appointment <br /> With 100+ Trusted Doctors</h2>
+    <div className="mx-4 mb-16 overflow-hidden rounded-2xl bg-primary sm:mx-6 md:mx-10">
+      <div className="grid items-center gap-8 px-6 py-8 md:grid-cols-[1.1fr_0.9fr] md:px-10 md:py-10">
+        <div className="text-primary-foreground">
+          <h2 className="mb-4 text-2xl font-bold sm:text-3xl">Book Appointment With 100+ Trusted Doctors</h2>
           <button
             onClick={() => navigate("/login")}
-            className="bg-background text-foreground px-8 py-3 rounded-full font-medium text-sm hover:scale-105 transition-transform mt-4"
+            className="mt-4 rounded-full bg-background px-6 py-3 text-sm font-medium text-foreground transition-transform hover:scale-105 sm:px-8"
           >
             Create account
           </button>
         </div>
-        <div className="hidden md:block w-[350px] h-[200px] overflow-hidden">
+        <div className="hidden overflow-hidden md:block md:h-[200px] md:w-[350px]">
           <img src={appointmentBanner} alt="Book appointment" className="w-full h-full object-cover" loading="lazy" />
         </div>
       </div>

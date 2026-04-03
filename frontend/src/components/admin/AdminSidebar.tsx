@@ -1,9 +1,14 @@
 import { NavLink as RouterNavLink, useLocation } from "react-router-dom";
-import { LayoutDashboard, Calendar, UserPlus, Users, Stethoscope, User } from "lucide-react";
+import { LayoutDashboard, Calendar, UserPlus, Users, User } from "lucide-react";
 import { useAppContext } from "@/context/AppContext";
 
-const AdminSidebar = () => {
-  const { isAdmin, isDoctor } = useAppContext();
+interface AdminSidebarProps {
+  open: boolean;
+  onClose: () => void;
+}
+
+const AdminSidebar = ({ open, onClose }: AdminSidebarProps) => {
+  const { isAdmin } = useAppContext();
   const location = useLocation();
 
   const adminLinks = [
@@ -20,9 +25,13 @@ const AdminSidebar = () => {
   ];
 
   const links = isAdmin ? adminLinks : doctorLinks;
-
-  return (
-    <div className="w-[220px] min-h-[calc(100vh-57px)] border-r border-border bg-background pt-6">
+  const panel = (
+    <div className="h-full min-h-[calc(100vh-57px)] border-r border-border bg-background pt-6">
+      <div className="flex justify-end px-4 pb-4 md:hidden">
+        <button onClick={onClose} className="text-sm font-medium text-muted-foreground">
+          Close
+        </button>
+      </div>
       <ul className="flex flex-col gap-1 px-3">
         {links.map((link) => {
           const active = location.pathname === link.to;
@@ -30,11 +39,12 @@ const AdminSidebar = () => {
             <li key={link.to}>
               <RouterNavLink
                 to={link.to}
-                className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                  active ? "bg-primary/10 text-primary border-r-4 border-primary" : "text-muted-foreground hover:bg-secondary"
+                onClick={onClose}
+                className={`flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition-colors ${
+                  active ? "border-r-4 border-primary bg-primary/10 text-primary" : "text-muted-foreground hover:bg-secondary"
                 }`}
               >
-                <link.icon className="w-5 h-5" />
+                <link.icon className="h-5 w-5" />
                 {link.label}
               </RouterNavLink>
             </li>
@@ -42,6 +52,22 @@ const AdminSidebar = () => {
         })}
       </ul>
     </div>
+  );
+
+  return (
+    <>
+      <aside className="hidden w-[220px] shrink-0 md:block">{panel}</aside>
+      <div className={`fixed inset-0 z-40 transition ${open ? "pointer-events-auto" : "pointer-events-none"} md:hidden`}>
+        <button
+          aria-label="Close sidebar backdrop"
+          className={`absolute inset-0 bg-black/40 transition-opacity ${open ? "opacity-100" : "opacity-0"}`}
+          onClick={onClose}
+        />
+        <aside className={`absolute left-0 top-0 h-full w-[280px] max-w-[85vw] bg-background shadow-2xl transition-transform ${open ? "translate-x-0" : "-translate-x-full"}`}>
+          {panel}
+        </aside>
+      </div>
+    </>
   );
 };
 

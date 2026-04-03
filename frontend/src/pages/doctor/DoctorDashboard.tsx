@@ -18,7 +18,7 @@ const DoctorDashboard = () => {
   // Example: get token from context or localStorage
   const token = localStorage.getItem("token") || "";
   return (
-    <div className="p-6">
+    <div className="p-4 sm:p-6">
       {/* Notifications */}
       <div className="mb-6">
         <NotificationList recipientType="DOCTOR" token={token} />

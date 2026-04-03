@@ -20,10 +20,10 @@ const AddDoctor = () => {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-4 sm:p-6">
       <h1 className="text-xl font-bold text-foreground mb-6">Add Doctor</h1>
-      <form onSubmit={handleSubmit} className="bg-card border border-border rounded-xl p-6 max-w-3xl">
-        <div className="flex items-center gap-4 mb-6">
+      <form onSubmit={handleSubmit} className="bg-card border border-border rounded-xl p-5 sm:p-6 max-w-3xl">
+        <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center">
           <div className="w-20 h-20 bg-secondary rounded-full flex items-center justify-center text-muted-foreground text-sm">
             Upload
           </div>

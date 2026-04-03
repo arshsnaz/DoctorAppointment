@@ -10,9 +10,9 @@ const UserNavbar = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <nav className="flex items-center justify-between py-4 px-6 md:px-10 border-b border-border">
-      <Link to="/" className="text-2xl font-bold text-primary flex items-center gap-2">
-        <img src={doctorLogo} alt="Prescripto logo" className="w-7 h-7 object-contain border border-primary/20 rounded-md bg-white p-1" />
+    <nav className="sticky top-0 z-30 flex items-center justify-between gap-3 border-b border-border bg-background/95 px-4 py-4 backdrop-blur-sm sm:px-6 md:px-10">
+      <Link to="/" className="flex min-w-0 items-center gap-2 text-xl font-bold text-primary sm:text-2xl">
+        <img src={doctorLogo} alt="Prescripto logo" className="h-7 w-7 shrink-0 rounded-md border border-primary/20 bg-white object-contain p-1" />
         Prescripto
       </Link>
 
@@ -24,7 +24,7 @@ const UserNavbar = () => {
         <li><Link to="/contact" className="hover:text-primary transition-colors">CONTACT</Link></li>
       </ul>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-3 sm:gap-4">
         {isLoggedIn ? (
           <div className="relative group">
             <div className="flex items-center gap-2 cursor-pointer">
@@ -49,18 +49,18 @@ const UserNavbar = () => {
         )}
 
         {/* Mobile menu */}
-        <button className="md:hidden" onClick={() => setShowMenu(true)}>
+        <button className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border md:hidden" onClick={() => setShowMenu(true)}>
           <Menu className="w-6 h-6" />
         </button>
       </div>
 
       {/* Mobile sidebar */}
       {showMenu && (
-        <div className="fixed inset-0 z-50 bg-background">
+        <div className="fixed inset-0 z-50 bg-background/95 backdrop-blur-sm">
           <div className="flex justify-end p-4">
-            <button onClick={() => setShowMenu(false)}><X className="w-6 h-6" /></button>
+            <button onClick={() => setShowMenu(false)} className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border"><X className="w-6 h-6" /></button>
           </div>
-          <ul className="flex flex-col items-center gap-6 mt-12 text-lg font-medium">
+          <ul className="mt-12 flex flex-col items-center gap-6 px-6 text-center text-lg font-medium">
             <li><Link to="/" onClick={() => setShowMenu(false)}>HOME</Link></li>
             <li><Link to="/doctors" onClick={() => setShowMenu(false)}>ALL DOCTORS</Link></li>
             <li><Link to="/about" onClick={() => setShowMenu(false)}>ABOUT</Link></li>

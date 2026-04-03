@@ -4,7 +4,7 @@ const AllAppointments = () => {
   const { appointments, currencySymbol } = useAppContext();
 
   return (
-    <div className="p-6">
+    <div className="p-4 sm:p-6">
       <h1 className="text-xl font-bold text-foreground mb-6">All Appointments</h1>
       <div className="border border-border rounded-xl bg-card overflow-hidden">
         <div className="overflow-x-auto">

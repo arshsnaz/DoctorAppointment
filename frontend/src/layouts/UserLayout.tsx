@@ -4,7 +4,7 @@ import Footer from "@/components/frontend/Footer";
 
 const UserLayout = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col overflow-x-hidden">
       <UserNavbar />
       <main className="flex-1">
         <Outlet />

@@ -16,7 +16,7 @@ const Dashboard = () => {
   // Example: get token from context or localStorage
   const token = localStorage.getItem("token") || "";
   return (
-    <div className="p-6">
+    <div className="p-4 sm:p-6">
       {/* Notifications */}
       <div className="mb-6">
         <NotificationList recipientType="ADMIN" token={token} />
@@ -24,7 +24,7 @@ const Dashboard = () => {
       {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-8">
         {stats.map((stat) => (
-          <div key={stat.label} className="border border-border rounded-xl p-5 flex items-center gap-4 bg-card">
+          <div key={stat.label} className="border border-border rounded-xl bg-card p-4 flex items-center gap-4 sm:p-5">
             <div className={`w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center ${stat.color}`}>
               <stat.icon className="w-6 h-6" />
             </div>
@@ -45,7 +45,7 @@ const Dashboard = () => {
         </div>
         <div className="divide-y divide-border">
           {appointments.slice(0, 5).map((apt) => (
-            <div key={apt._id} className="flex items-center gap-4 p-4">
+            <div key={apt._id} className="flex items-start gap-4 p-4">
               <div className="w-10 h-10 rounded-full bg-primary/10 overflow-hidden flex-shrink-0">
                 <img src={apt.docData.image} alt={apt.docData.name} className="w-full h-full object-cover" />
               </div>

@@ -1,16 +1,16 @@
 const Contact = () => {
   return (
-    <div className="max-w-5xl mx-auto px-4 py-12">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
       <h1 className="text-2xl font-bold text-foreground text-center mb-10">
         CONTACT <span className="text-primary">US</span>
       </h1>
 
-      <div className="flex flex-col md:flex-row gap-10">
+      <div className="grid gap-10 md:grid-cols-2 items-start">
         <div className="flex-1">
           <img
             src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600"
             alt="Contact"
-            className="w-full rounded-xl object-cover h-[350px]"
+            className="w-full rounded-xl object-cover aspect-[4/3] md:aspect-[5/4]"
             loading="lazy"
           />
         </div>

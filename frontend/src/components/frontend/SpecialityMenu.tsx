@@ -15,19 +15,19 @@ const SpecialityMenu = () => {
           Simply browse through our extensive list of trusted doctors, schedule your appointment hassle-free.
         </p>
       </div>
-      <div className="flex justify-center gap-6 flex-wrap max-w-4xl mx-auto">
+      <div className="mx-auto grid max-w-5xl grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6 sm:gap-4">
         {specialities.map((spec, i) => {
           const Icon = icons[i % icons.length];
           return (
             <button
               key={spec}
               onClick={() => navigate(`/doctors?speciality=${spec}`)}
-              className="flex flex-col items-center gap-3 p-4 rounded-xl hover:bg-primary/5 transition-colors group cursor-pointer w-[120px]"
+              className="group flex min-w-0 cursor-pointer flex-col items-center gap-3 rounded-xl p-3 transition-colors hover:bg-primary/5 sm:p-4"
             >
               <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                 <Icon className="w-7 h-7 text-primary" />
               </div>
-              <span className="text-xs text-foreground text-center font-medium">{spec}</span>
+              <span className="text-center text-xs font-medium leading-tight text-foreground">{spec}</span>
             </button>
           );
         })}

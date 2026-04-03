@@ -1,8 +1,20 @@
 
 import { useEffect, useState } from "react";
 
+type Appointment = {
+  id: number;
+  doctor?: {
+    image?: string;
+    name?: string;
+    speciality?: string;
+  };
+  date?: string;
+  time?: string;
+  status: string;
+};
+
 const MyAppointments = () => {
-  const [appointments, setAppointments] = useState<any[]>([]);
+  const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -47,7 +59,7 @@ const MyAppointments = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12">
       <h1 className="text-foreground font-bold text-xl mb-6">My appointments</h1>
       {loading ? (
         <div>Loading...</div>
@@ -59,7 +71,7 @@ const MyAppointments = () => {
         <div className="flex flex-col gap-4">
           {appointments.map((apt) => (
             <div key={apt.id} className="border border-border rounded-xl p-4 flex flex-col sm:flex-row gap-4">
-              <div className="bg-primary/5 rounded-lg p-3 w-[120px] flex-shrink-0">
+              <div className="bg-primary/5 rounded-lg p-3 w-full max-w-[160px] flex-shrink-0 sm:w-[120px] sm:max-w-none">
                 <img src={apt.doctor?.image || ""} alt={apt.doctor?.name || "Doctor"} className="w-full rounded-lg" loading="lazy" />
               </div>
               <div className="flex-1">

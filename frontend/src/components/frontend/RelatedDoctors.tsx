@@ -18,7 +18,7 @@ const RelatedDoctors = ({ docId, speciality }: RelatedDoctorsProps) => {
   return (
     <div className="mt-16">
       <h2 className="text-xl font-bold text-foreground text-center mb-8">Related Doctors</h2>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {related.map((doc) => (
           <div
             key={doc._id}

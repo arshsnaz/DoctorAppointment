@@ -1,5 +1,5 @@
-
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import doc1 from "@/assets/doctors/doc1.png";
 import doc2 from "@/assets/doctors/doc2.png";
 import doc3 from "@/assets/doctors/doc3.png";
@@ -8,32 +8,94 @@ import doc5 from "@/assets/doctors/doc5.png";
 import doc6 from "@/assets/doctors/doc6.png";
 
 const testimonials = [
-  {text: 'Dr. Montgomery is fantastic! He listened carefully to all my concerns and provided clear, actionable advice. I felt truly cared for and supported throughout the entire consultation process.', name: 'Sophia M.', date: 'November 16', img: doc3},
-  {text: 'I highly recommend Dr. Harper for his professionalism and dedication. He made me feel comfortable and explained everything clearly.', name: 'James L.', date: 'October 2', img: doc5},
-  {text: 'The best doctor I have ever visited. The appointment process was smooth and the care was exceptional.', name: 'Priya S.', date: 'September 21', img: doc6}
+  {
+    text: "Dr. Montgomery is fantastic! He listened carefully to all my concerns and provided clear, actionable advice. I felt truly cared for and supported throughout the entire consultation process.",
+    name: "Sophia M.",
+    date: "November 16",
+    img: doc3,
+  },
+  {
+    text: "I highly recommend Dr. Harper for his professionalism and dedication. He made me feel comfortable and explained everything clearly.",
+    name: "James L.",
+    date: "October 2",
+    img: doc5,
+  },
+  {
+    text: "The best doctor I have ever visited. The appointment process was smooth and the care was exceptional.",
+    name: "Priya S.",
+    date: "September 21",
+    img: doc6,
+  },
+];
+
+const warningCards = [
+  {
+    img: doc1,
+    title: "Chronic Fatigue",
+    desc: "Feeling constantly tired despite adequate rest could indicate an underlying condition.",
+  },
+  {
+    img: doc2,
+    title: "Unexplained Weight Changes",
+    desc: "Sudden weight loss or gain without a clear cause should be addressed.",
+  },
+  {
+    img: doc3,
+    title: "Frequent Headaches",
+    desc: "Recurring headaches or migraines may require further evaluation.",
+  },
+  {
+    img: doc4,
+    title: "Digestive Issues",
+    desc: "Bloating, stomach pain, or irregular bowel movement may need attention.",
+  },
+  {
+    img: doc5,
+    title: "Shortness of Breath",
+    desc: "Difficulty breathing during normal activities could signal a serious health issue.",
+  },
+  {
+    img: doc6,
+    title: "Persistent Cough or Sore Throat",
+    desc: "Especially if it lasts more than two weeks or is accompanied by fever.",
+  },
 ];
 
 function TestimonialsCarousel() {
-  const [idx, setIdx] = useState(0);
+  const [index, setIndex] = useState(0);
+
   useEffect(() => {
-    const timer = setInterval(() => setIdx(i => (i+1)%testimonials.length), 3500);
+    const timer = setInterval(() => setIndex((current) => (current + 1) % testimonials.length), 3500);
     return () => clearInterval(timer);
   }, []);
-  const t = testimonials[idx];
+
+  const testimonial = testimonials[index];
+
   return (
-    <div style={{display:'flex',flexWrap:'wrap',alignItems:'center',justifyContent:'space-between',gap:'2em',maxWidth:'1100px',margin:'0 auto'}}>
-      <div style={{flex:'1 1 320px',minWidth:'260px'}}>
-        <h2 style={{fontSize:'2em',fontWeight:700,color:'#1a2236',marginBottom:'0.5em',textAlign:'left'}}>What Patients<br/>Say About Dr. Harper</h2>
-        <div style={{color:'#6b7280',fontSize:'1.1em',marginBottom:'1.5em',textAlign:'left'}}>We're proud to have helped thousands of patients take steps toward better health.</div>
+    <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:items-center">
+      <div className="max-w-xl">
+        <h2 className="text-3xl font-bold leading-tight text-foreground sm:text-4xl">
+          What Patients
+          <br />
+          Say About Dr. Harper
+        </h2>
+        <p className="mt-4 text-sm leading-7 text-muted-foreground sm:text-base">
+          We&apos;re proud to have helped thousands of patients take steps toward better health.
+        </p>
       </div>
-      <div style={{flex:'2 1 420px',minWidth:'320px',background:'#fff',borderRadius:'1.2em',boxShadow:'0 8px 32px 0 rgba(44,83,100,0.22)',padding:'2em 2.5em',display:'flex',flexDirection:'column',gap:'1em',alignItems:'flex-start',position:'relative',overflow:'hidden',minHeight:'180px'}}>
-        <div style={{color:'#2563eb',fontSize:'1.5em',fontWeight:700}}>&ldquo;</div>
-        <div style={{fontSize:'1.1em',color:'#374151',marginBottom:'1em'}}>{t.text}</div>
-        <div style={{display:'flex',alignItems:'center',gap:'0.8em',marginTop:'1em'}}>
-          <img src={t.img} alt={t.name} style={{width:'38px',height:'38px',borderRadius:'50%',objectFit:'cover',background:'#f8fafc',border:'2px solid #fff',boxShadow:'0 2px 8px 0 rgba(44,83,100,0.08)'}} />
+
+      <div className="rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8">
+        <div className="mb-4 text-4xl font-bold leading-none text-primary">&ldquo;</div>
+        <p className="text-sm leading-7 text-foreground/80 sm:text-base">{testimonial.text}</p>
+        <div className="mt-6 flex items-center gap-3">
+          <img
+            src={testimonial.img}
+            alt={testimonial.name}
+            className="h-10 w-10 rounded-full border-2 border-background object-cover shadow-sm"
+          />
           <div>
-            <div style={{fontWeight:600,color:'#222'}}>{t.name}</div>
-            <div style={{fontSize:'0.95em',color:'#6b7280'}}>{t.date}</div>
+            <div className="font-semibold text-foreground">{testimonial.name}</div>
+            <div className="text-sm text-muted-foreground">{testimonial.date}</div>
           </div>
         </div>
       </div>
@@ -43,186 +105,123 @@ function TestimonialsCarousel() {
 
 const Index = () => {
   return (
-    <main className="premium-homepage" style={{width:'100%',margin:'0 auto',padding:'0'}}>
-      {/* Hero Section */}
-      <section className="premium-hero-section" style={{display:'flex',flexWrap:'wrap',alignItems:'center',justifyContent:'flex-start',gap:'2.5em',padding:'3.5em 2em 2.5em 3em',background:'#fff',borderRadius:'2.5em',boxShadow:'0 16px 64px 0 rgba(44,83,100,0.22), 0 2px 24px 0 rgba(44,83,100,0.18)',margin:'2em 0',position:'relative',minHeight:'420px'}}>
-        <div className="premium-hero-content" style={{flex:'1 1 480px',minWidth:'320px',maxWidth:'600px',display:'flex',flexDirection:'column',gap:'1.8em',justifyContent:'center',alignItems:'flex-start',textAlign:'left'}}>
-          <span className="premium-hero-label" style={{fontSize:'1.2em',color:'#6b7280',fontWeight:500,marginBottom:'0.5em'}}>General Practitioner</span>
-          <h1 className="premium-hero-title" style={{fontSize:'3.2em',fontWeight:800,lineHeight:1.1,marginBottom:'0.2em',color:'#1a2236'}}>
-            Achieve the best version<br />of your <span className="premium-hero-highlight" style={{color:'#2563eb'}}>health</span>
-          </h1>
-          <p className="premium-hero-desc" style={{fontSize:'1.25em',color:'#374151',marginBottom:'1.2em'}}>Take the first step toward better health with personalized care.</p>
-          <a href="/login" className="premium-hero-btn" style={{background:'#2563eb',color:'#fff',fontWeight:700,fontSize:'1.2em',borderRadius:'2em',padding:'1em 3em',textDecoration:'none',boxShadow:'0 2px 12px 0 rgba(37,99,235,0.10)',transition:'background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s',width:'fit-content'}}>Consultation</a>
-        </div>
-        <div style={{flex:'1 1 420px',minWidth:'320px',display:'flex',flexDirection:'column',alignItems:'center',gap:'0.2em',justifyContent:'center'}}>
-          <img src={doc1} alt="Doctor" style={{width:'320px',height:'400px',objectFit:'contain',borderRadius:'1.2em',marginBottom:'-0.5em'}} />
-          <span style={{color:'#2563eb',fontSize:'2.2em',fontWeight:700,marginTop:'0.1em'}}>&ldquo;</span>
-          <span style={{fontSize:'1.18em',color:'#374151',fontStyle:'italic',lineHeight:1.6,display:'block',margin:'0.1em 0'}}>I'm here to provide expert care, guide you through your health concerns, and help you live a healthier life.</span>
-          <span style={{color:'#2563eb',fontWeight:700,fontSize:'1.15em'}}>Dr. Harper Montgomery</span>
-        </div>
-      </section>
+    <main className="bg-slate-50">
+      <section className="mx-auto max-w-7xl px-4 pb-12 pt-6 sm:px-6 lg:px-8">
+        <div className="grid gap-10 rounded-[2rem] bg-white p-6 shadow-[0_16px_64px_rgba(44,83,100,0.16)] sm:p-8 lg:grid-cols-[1.1fr_0.9fr] lg:p-12">
+          <div className="flex flex-col justify-center">
+            <span className="text-xs font-semibold uppercase tracking-[0.35em] text-muted-foreground sm:text-sm">General Practitioner</span>
+            <h1 className="mt-4 max-w-2xl text-4xl font-extrabold leading-tight text-foreground sm:text-5xl lg:text-6xl">
+              Achieve the best version of your <span className="text-primary">health</span>
+            </h1>
+            <p className="mt-5 max-w-xl text-sm leading-7 text-muted-foreground sm:text-base lg:text-lg">
+              Take the first step toward better health with personalized care.
+            </p>
+            <div className="mt-8">
+              <Link
+                to="/login"
+                className="inline-flex items-center justify-center rounded-full bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.03] sm:px-8 sm:py-3.5 sm:text-base"
+              >
+                Consultation
+              </Link>
+            </div>
+          </div>
 
-      {/* Stats Section */}
-      <section className="premium-stats-section" style={{background:'#fff',borderRadius:'2em',boxShadow:'0 4px 32px 0 rgba(44,83,100,0.08)',margin:'2em 0',padding:'2.5em 1em'}}>
-        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'2em',maxWidth:'900px',margin:'0 auto',textAlign:'left'}}>
-          <div style={{display:'flex',flexDirection:'column',alignItems:'flex-start',gap:'0.5em'}}>
-            <div style={{fontWeight:600,fontSize:'1.2em',color:'#222'}}>Successful Diagnoses</div>
-            <div style={{color:'#6b7280',fontSize:'1em',marginBottom:'0.5em'}}>Ensuring accurate and timely care.</div>
-            <div style={{fontWeight:800,fontSize:'2.2em',color:'#2563eb'}}>1,200+</div>
-          </div>
-          <div style={{display:'flex',flexDirection:'column',alignItems:'flex-start',gap:'0.5em'}}>
-            <div style={{fontWeight:600,fontSize:'1.2em',color:'#222'}}>On-Time Consultations</div>
-            <div style={{color:'#6b7280',fontSize:'1em',marginBottom:'0.5em'}}>Your time is our priority.</div>
-            <div style={{fontWeight:800,fontSize:'2.2em',color:'#2563eb'}}>99%</div>
-          </div>
-          <div style={{display:'flex',flexDirection:'column',alignItems:'flex-start',gap:'0.5em'}}>
-            <div style={{fontWeight:600,fontSize:'1.2em',color:'#222'}}>Recovery Success Rate</div>
-            <div style={{color:'#6b7280',fontSize:'1em',marginBottom:'0.5em'}}>Helping patients achieve optimal health outcomes.</div>
-            <div style={{fontWeight:800,fontSize:'2.2em',color:'#2563eb'}}>99%</div>
-          </div>
-          <div style={{display:'flex',flexDirection:'column',alignItems:'flex-start',gap:'0.5em'}}>
-            <div style={{fontWeight:600,fontSize:'1.2em',color:'#222'}}>Lifestyle Plans Delivered</div>
-            <div style={{color:'#6b7280',fontSize:'1em',marginBottom:'0.5em'}}>Supporting healthier daily routines.</div>
-            <div style={{fontWeight:800,fontSize:'2.2em',color:'#2563eb'}}>500+</div>
+          <div className="flex flex-col items-center justify-center gap-4">
+            <div className="w-full max-w-md rounded-[2rem] bg-slate-50 p-4 shadow-sm sm:p-6">
+              <img src={doc1} alt="Doctor" className="mx-auto w-full max-w-[340px] object-contain" />
+            </div>
+            <div className="max-w-md rounded-2xl border border-border bg-card p-5 shadow-sm">
+              <div className="text-3xl font-bold leading-none text-primary">&ldquo;</div>
+              <p className="mt-2 text-sm leading-7 text-foreground/80 sm:text-base">
+                I&apos;m here to provide expert care, guide you through your health concerns, and help you live a healthier life.
+              </p>
+              <p className="mt-4 text-right text-sm font-semibold text-primary sm:text-base">Dr. Harper Montgomery</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="premium-about-section" style={{display:'flex',flexWrap:'wrap',alignItems:'center',gap:'2em',background:'#fff',borderRadius:'2em',boxShadow:'0 4px 32px 0 rgba(44,83,100,0.08)',margin:'2em 0',padding:'2.5em 1em'}}>
-        <div className="premium-about-image" style={{flex:'1 1 320px',minWidth:'220px',maxWidth:'340px'}}>
-          <img src={doc2} alt="About Dr. Harper Montgomery" style={{width:'100%',height:'auto',borderRadius:'2em',objectFit:'cover',boxShadow:'0 8px 32px 0 rgba(44,83,100,0.10)'}} />
-        </div>
-        <div className="premium-about-content" style={{flex:'2 1 400px',minWidth:'260px',textAlign:'left',alignItems:'flex-start',display:'flex',flexDirection:'column',gap:'1em'}}>
-          <h2 style={{fontSize:'2.2em',fontWeight:700,marginBottom:'0.2em'}}>About Dr. Harper Montgomery</h2>
-          <div style={{color:'#6b7280',fontWeight:500,marginBottom:'1em'}}>General Practitioner</div>
-          <p style={{fontSize:'1.1em',marginBottom:'1em'}}>Dr. Harper Montgomery is a compassionate and highly skilled General Practitioner dedicated to providing personalized healthcare for patients of all ages. With over 10 years of experience in family medicine, Dr. Montgomery specializes in preventive care, chronic disease management, and holistic health solutions.</p>
-          <p className="premium-about-quote" style={{fontStyle:'italic',color:'#2563eb',fontWeight:500,margin:'0.5em 0'}}>"Health is not just the absence of illness; it's about living your best life, physically and mentally. My mission is to help you achieve that balance."</p>
-          <div className="premium-about-meta" style={{marginTop:'1em'}}>
-            <span><b>Location:</b> San Francisco, California</span><br/>
-            <span><b>Education:</b> M.D. Harvard Medical School · B.Sc. in Biology: UCLA</span>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="premium-testimonials-section" style={{margin:'2em 0',padding:'2.5em 1em',background:'#fff',borderRadius:'2em',boxShadow:'0 4px 32px 0 rgba(44,83,100,0.08)'}}>
-        <TestimonialsCarousel />
-      </section>
-
-
-      <section style={{margin:'3em 0'}}>
-        <h2 style={{textAlign:'left',fontSize:'2.4em',fontWeight:800,marginBottom:'1.8em',color:'#1a2236',marginLeft:'0.5em'}}>When Should You See a Doctor?</h2>
-        <div style={{
-          display:'grid',
-          gridTemplateColumns:'repeat(auto-fit, minmax(320px, 1fr))',
-          gap:'2em',
-          justifyContent:'flex-start',
-          alignItems:'stretch',
-          maxWidth:'1200px',
-          margin:'0 auto'
-        }}>
+      <section className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-2 gap-4 rounded-[2rem] bg-white p-5 shadow-sm sm:grid-cols-4 sm:p-8">
           {[
-            {
-              img: doc1,
-              title: 'Chronic Fatigue',
-              desc: 'Feeling constantly tired despite adequate rest could indicate an underlying condition.'
-            },
-            {
-              img: doc2,
-              title: 'Unexplained Weight Changes',
-              desc: 'Sudden weight loss or gain without a clear cause should be addressed.'
-            },
-            {
-              img: doc3,
-              title: 'Frequent Headaches',
-              desc: 'Recurring headaches or migraines may require further evaluation.'
-            },
-            {
-              img: doc4,
-              title: 'Digestive Issues',
-              desc: 'Bloating, stomach pain, or irregular bowel movement may need attention.'
-            },
-            {
-              img: doc5,
-              title: 'Shortness of Breath',
-              desc: 'Difficulty breathing during normal activities could signal a serious health issue.'
-            },
-            {
-              img: doc6,
-              title: 'Persistent Cough or Sore Throat',
-              desc: 'Especially if it lasts more than two weeks or is accompanied by fever.'
-            }
-          ].map((item, idx) => (
-            <div key={idx} style={{
-              background:'#fff',
-              borderRadius:'1.5em',
-              boxShadow:'0 4px 32px 0 rgba(44,83,100,0.08)',
-              border:'1.5px solid #f1f5f9',
-              padding:'2.2em 2em 2em 2em',
-              display:'flex',
-              flexDirection:'column',
-              alignItems:'flex-start',
-              minHeight:'210px',
-              position:'relative',
-              transition:'box-shadow 0.2s',
-              cursor:'pointer',
-              overflow:'visible'
-            }}>
-              <img src={item.img} alt={item.title} style={{width:'48px',height:'48px',borderRadius:'50%',objectFit:'cover',position:'absolute',top:'-24px',left:'24px',boxShadow:'0 2px 8px 0 rgba(44,83,100,0.10)',border:'3px solid #fff'}} />
-              <div style={{marginTop:'2em'}}>
-                <div style={{fontWeight:700,fontSize:'1.18em',color:'#2563eb',marginBottom:'0.2em'}}>{item.title}</div>
-                <div style={{color:'#374151',fontSize:'1.05em',marginTop:'0.2em',lineHeight:1.5}}>{item.desc}</div>
-              </div>
+            { label: "Successful Diagnoses", value: "1,200+", desc: "Ensuring accurate and timely care." },
+            { label: "On-Time Consultations", value: "99%", desc: "Your time is our priority." },
+            { label: "Recovery Success Rate", value: "99%", desc: "Helping patients achieve optimal health outcomes." },
+            { label: "Lifestyle Plans Delivered", value: "500+", desc: "Supporting healthier daily routines." },
+          ].map((stat) => (
+            <div key={stat.label} className="rounded-2xl border border-border bg-slate-50 p-4 sm:p-5">
+              <div className="text-sm font-semibold text-foreground">{stat.label}</div>
+              <div className="mt-2 text-xs leading-6 text-muted-foreground sm:text-sm">{stat.desc}</div>
+              <div className="mt-4 text-2xl font-extrabold text-primary sm:text-3xl">{stat.value}</div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Consultation CTA Section */}
-      <section className="premium-cta-section" style={{
-        background:'linear-gradient(90deg, #2563eb 0%, #1e293b 100%)',
-        color:'#fff',
-        borderRadius:'2em',
-        boxShadow:'0 8px 40px 0 rgba(44,83,100,0.18)',
-        margin:'2em 0',
-        padding:'0',
-        overflow:'hidden',
-        position:'relative',
-        minHeight:'340px',
-        display:'flex',
-        alignItems:'center',
-        justifyContent:'center',
-        flexWrap:'wrap',
-        gap:'0',
-      }}>
-        <div style={{
-          flex:'1 1 340px',
-          minWidth:'220px',
-          maxWidth:'420px',
-          width:'100%',
-          display:'flex',
-          alignItems:'center',
-          justifyContent:'center',
-          background:'none',
-          padding:'0',
-        }}>
-          <img src={doc3} alt="Doctor" style={{width:'100%',maxWidth:'320px',height:'auto',objectFit:'contain',borderRadius:'2em',background:'none',boxShadow:'none'}} />
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="grid gap-8 rounded-[2rem] bg-white p-6 shadow-sm lg:grid-cols-[320px_1fr] lg:p-8">
+          <div className="overflow-hidden rounded-[1.5rem]">
+            <img src={doc2} alt="About Dr. Harper Montgomery" className="aspect-[4/5] w-full object-cover" />
+          </div>
+          <div className="flex flex-col gap-4 text-left">
+            <h2 className="text-3xl font-bold text-foreground sm:text-4xl">About Dr. Harper Montgomery</h2>
+            <div className="text-sm font-medium text-muted-foreground sm:text-base">General Practitioner</div>
+            <p className="text-sm leading-7 text-foreground/80 sm:text-base">
+              Dr. Harper Montgomery is a compassionate and highly skilled General Practitioner dedicated to providing personalized healthcare for patients of all ages. With over 10 years of experience in family medicine, Dr. Montgomery specializes in preventive care, chronic disease management, and holistic health solutions.
+            </p>
+            <p className="rounded-2xl border border-primary/15 bg-primary/5 p-4 text-sm font-medium italic text-primary sm:text-base">
+              &ldquo;Health is not just the absence of illness; it&apos;s about living your best life, physically and mentally. My mission is to help you achieve that balance.&rdquo;
+            </p>
+            <div className="text-sm leading-7 text-muted-foreground sm:text-base">
+              <div><span className="font-semibold text-foreground">Location:</span> San Francisco, California</div>
+              <div><span className="font-semibold text-foreground">Education:</span> M.D. Harvard Medical School · B.Sc. in Biology: UCLA</div>
+            </div>
+          </div>
         </div>
-        <div style={{
-          flex:'2 1 400px',
-          minWidth:'260px',
-          padding:'2em 1.5em',
-          textAlign:'left',
-          display:'flex',
-          flexDirection:'column',
-          justifyContent:'center',
-          gap:'2em',
-          width:'100%',
-        }}>
-          <h2 style={{fontSize:'2.1em',fontWeight:800,marginBottom:'0.5em',color:'#fff',lineHeight:1.2}}>Not sure if you need to see a doctor?</h2>
-          <p style={{fontSize:'1.1em',fontWeight:500,marginBottom:'1.5em',color:'#e0e7ef',lineHeight:1.5}}>Book a consultation today, and we'll help you determine the next steps toward better health.</p>
-          <a href="/login" className="premium-cta-btn" style={{background:'#fff',color:'#2563eb',fontWeight:700,fontSize:'1.08em',borderRadius:'2em',padding:'0.9em 2.2em',textDecoration:'none',boxShadow:'0 2px 12px 0 rgba(37,99,235,0.10)',transition:'background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s',width:'fit-content',maxWidth:'100%'}}>Book a Consultation &rarr;</a>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="rounded-[2rem] bg-white p-6 shadow-sm sm:p-8">
+          <TestimonialsCarousel />
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <h2 className="mb-8 text-3xl font-extrabold text-foreground sm:text-4xl">When Should You See a Doctor?</h2>
+        <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+          {warningCards.map((item) => (
+            <article key={item.title} className="group relative rounded-[1.5rem] border border-border bg-white p-6 pt-10 shadow-sm transition-transform hover:-translate-y-1 hover:shadow-lg">
+              <img
+                src={item.img}
+                alt={item.title}
+                className="absolute left-6 top-0 h-12 w-12 -translate-y-1/2 rounded-full border-4 border-white object-cover shadow-sm"
+              />
+              <h3 className="text-lg font-bold text-primary">{item.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-foreground/80">{item.desc}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="overflow-hidden rounded-[2rem] bg-gradient-to-r from-primary to-slate-900 text-white shadow-[0_8px_40px_rgba(44,83,100,0.18)]">
+          <div className="grid gap-8 p-6 sm:p-8 lg:grid-cols-[0.9fr_1.1fr] lg:p-10">
+            <div className="flex items-center justify-center rounded-[1.5rem] bg-white/10 p-4">
+              <img src={doc3} alt="Doctor" className="w-full max-w-[320px] object-contain" />
+            </div>
+            <div className="flex flex-col justify-center gap-5">
+              <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">Not sure if you need to see a doctor?</h2>
+              <p className="max-w-2xl text-sm leading-7 text-slate-200 sm:text-base">
+                Book a consultation today, and we&apos;ll help you determine the next steps toward better health.
+              </p>
+              <Link
+                to="/login"
+                className="inline-flex w-fit items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-primary transition-transform hover:scale-[1.03] sm:px-8"
+              >
+                  Book a Consultation &rarr;
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </main>
