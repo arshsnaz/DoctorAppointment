@@ -3,6 +3,14 @@ import { useAppContext } from "@/context/AppContext";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { useState } from "react";
 import doctorLogo from "@/assets/doctor-logo.png";
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+
+const mobileLinks = [
+  { to: "/", label: "HOME" },
+  { to: "/doctors", label: "ALL DOCTORS" },
+  { to: "/about", label: "ABOUT" },
+  { to: "/contact", label: "CONTACT" },
+];
 
 const UserNavbar = () => {
   const { isLoggedIn, setIsLoggedIn } = useAppContext();
@@ -49,32 +57,102 @@ const UserNavbar = () => {
         )}
 
         {/* Mobile menu */}
-        <button className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border md:hidden" onClick={() => setShowMenu(true)}>
-          <Menu className="w-6 h-6" />
+        <button
+          type="button"
+          aria-label={showMenu ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={showMenu}
+          onClick={() => setShowMenu((value) => !value)}
+          className={`inline-flex h-11 items-center gap-2 rounded-full border px-4 text-sm font-semibold shadow-sm transition-all active:scale-95 md:hidden ${
+            showMenu
+              ? "border-primary bg-primary text-primary-foreground"
+              : "border-border bg-card text-foreground hover:border-primary/30 hover:bg-primary/5 hover:text-primary"
+          }`}
+        >
+          {showMenu ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          <span className="hidden sm:inline">Menu</span>
         </button>
       </div>
 
-      {/* Mobile sidebar */}
-      {showMenu && (
-        <div className="fixed inset-0 z-50 bg-background/95 backdrop-blur-sm">
-          <div className="flex justify-end p-4">
-            <button onClick={() => setShowMenu(false)} className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border"><X className="w-6 h-6" /></button>
+      <Sheet open={showMenu} onOpenChange={setShowMenu}>
+        <SheetContent side="right" className="w-[min(88vw,24rem)] overflow-y-auto border-border p-0">
+          <div className="flex h-full flex-col">
+            <SheetHeader className="border-b border-border px-6 py-6 text-left">
+              <SheetTitle className="text-2xl font-bold text-primary">Prescripto</SheetTitle>
+              <SheetDescription className="text-sm leading-6 text-muted-foreground">
+                Browse doctors, manage your appointments, and sign in on the go.
+              </SheetDescription>
+            </SheetHeader>
+
+            <div className="flex-1 px-4 py-5">
+              <div className="rounded-3xl bg-slate-50 p-3 shadow-sm">
+                <div className="grid gap-2">
+                  {mobileLinks.map((link) => (
+                    <Link
+                      key={link.to}
+                      to={link.to}
+                      onClick={() => setShowMenu(false)}
+                      className="flex items-center justify-between rounded-2xl border border-transparent px-4 py-4 text-sm font-semibold tracking-wide text-foreground transition-colors hover:border-primary/20 hover:bg-white hover:text-primary"
+                    >
+                      <span>{link.label}</span>
+                      <span className="text-xs text-muted-foreground">Navigate</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {!isLoggedIn ? (
+                <div className="mt-6 rounded-3xl border border-primary/10 bg-primary/5 p-5">
+                  <p className="text-sm font-medium text-foreground">Need an account?</p>
+                  <p className="mt-1 text-sm leading-6 text-muted-foreground">Create one to book an appointment and manage your visits.</p>
+                  <button
+                    onClick={() => {
+                      setShowMenu(false);
+                      navigate("/login");
+                    }}
+                    className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.01]"
+                  >
+                    Create account
+                  </button>
+                </div>
+              ) : (
+                <div className="mt-6 rounded-3xl border border-border bg-card p-5">
+                  <p className="text-sm font-medium text-foreground">Account actions</p>
+                  <div className="mt-4 grid gap-2">
+                    <button
+                      onClick={() => {
+                        setShowMenu(false);
+                        navigate("/my-profile");
+                      }}
+                      className="rounded-2xl border border-border px-4 py-3 text-left text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+                    >
+                      My Profile
+                    </button>
+                    <button
+                      onClick={() => {
+                        setShowMenu(false);
+                        navigate("/my-appointments");
+                      }}
+                      className="rounded-2xl border border-border px-4 py-3 text-left text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+                    >
+                      My Appointments
+                    </button>
+                    <button
+                      onClick={() => {
+                        setIsLoggedIn(false);
+                        setShowMenu(false);
+                        navigate("/");
+                      }}
+                      className="rounded-2xl border border-destructive/20 px-4 py-3 text-left text-sm font-medium text-destructive transition-colors hover:bg-destructive hover:text-destructive-foreground"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
-          <ul className="mt-12 flex flex-col items-center gap-6 px-6 text-center text-lg font-medium">
-            <li><Link to="/" onClick={() => setShowMenu(false)}>HOME</Link></li>
-            <li><Link to="/doctors" onClick={() => setShowMenu(false)}>ALL DOCTORS</Link></li>
-            <li><Link to="/about" onClick={() => setShowMenu(false)}>ABOUT</Link></li>
-            <li><Link to="/contact" onClick={() => setShowMenu(false)}>CONTACT</Link></li>
-            {!isLoggedIn && (
-              <li>
-                <button onClick={() => { setShowMenu(false); navigate("/login"); }} className="bg-primary text-primary-foreground px-8 py-2.5 rounded-full">
-                  Create account
-                </button>
-              </li>
-            )}
-          </ul>
-        </div>
-      )}
+        </SheetContent>
+      </Sheet>
     </nav>
   );
 };
